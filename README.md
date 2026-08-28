@@ -26,7 +26,8 @@
 $proof:$ Let $\alpha$ be the load factor calculated by $n/m$ where $n$ is the number of elements and $m$ is the number of buckets. This is bounded by a given constant $\alpha$ < $0.75$ = $O(1)$ necessary for resizing.
 1. By uniform hashing, the expected number of elements in any bucket is $E[k]$ = $\alpha$ = $O(1)$, where $k$ is the number of elements in the bucket.
 2. Each operation first calculates the hash and index of the bucket in $O(1)$.
-3. Within each bucket, it contains a balanced tree structure of $O(\log k)$ cost for collision handling. Since $E[k]$ = $O(1)$ given from point 1, then we get $O(\log E[k])$ = $O(\log O(1))$ = $O(1)$. 
+3. Each bucket contains a balanced tree, so for an operation within a bucket containing $k$ elements, it cost $O(\log k + 1)$ time. Since $\log(k + 1)$ ≤ $k$, then we have $E[log(k + 1)$] ≤ $E[k]$ = $\alpha$ = $O(1)$. Therefore, the expected cost of operating within a bucket is $O(1)$ time.
+   
 We can now combine points 2 and 3 to get an overall expected $O(1)$ time complexity for the find, insert, and remove operations.
 
 #### Lemma 2 (Worst Case) : The HashTree data structure guarantees a worst case time complexity of $O(\log n)$ for the find, insert, and remove operations.
