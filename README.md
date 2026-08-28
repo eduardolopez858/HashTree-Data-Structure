@@ -33,7 +33,7 @@ We can now combine points 2 and 3 to get an overall expected $O(1)$ time complex
 
 $proof:$ In the worst case of maximum collisions, the bucket contains the structure of a balanced tree of height $h$. Suppose $N(h)$ is the minimum number of nodes, then we get the recurrence $N(h)$ = 1 + $N(h - 1)$ + $N(h - 2)$, growing asymptotically like the Fibonacci sequence. Thus we get $N(h)$ >= $Fib_{h + 2}$ estimated to be the $\phi^{h}$ where $\phi$ is the golden ratio $(1 + (5)^{1/2}) / 2$. This means to get the height of the balanced tree, we must do the logarithmic calculation to get $h$ = $O(\log k)$ where $k$ is the number of nodes/elements in the bucket.
 
-Since $k$ <= $n$ where $n$ is the total number of nodes in the entire data structure, then we have $O(\log k)$ ⊆ $O(\log n)$ and in the maximum collision worst case, we have that $k$ = $n$, thus $O(\log k)$ = $O(\log n)$
+Since $k$ ≤ $n$ where $n$ is the total number of nodes in the entire data structure, then we have $O(\log k)$ ⊆ $O(\log n)$ and in the maximum collision worst case, we have that $k$ = $n$, thus $O(\log k)$ = $O(\log n)$
 
 #### Remark: These complexities are guaranteed on regular use operations. If the load factor exceeds $0.75$, resizing of the buckets array will cost a $O(n)$ pause for migrating the elements of the current array into the new resized array since we still get $O(\log n)$ on the find, insert, and remove operations. The space complexity of the HashTree data stucture is $O(n)$ where $n$ is the number of elements. More memory pointers are used than the standard hash map with seperate chaining (linked list) collision resolulion strategy.
 
