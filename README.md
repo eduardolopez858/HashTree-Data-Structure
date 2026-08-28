@@ -31,7 +31,7 @@ We can now combine points 2 and 3 to get an overall expected $O(1)$ time complex
 
 #### Lemma 2 (Worst Case) : The HashTree data structure guarantees a worst case time complexity of $O(\log n)$ for the find, insert, and remove operations.
 
-$proof:$ In the worst case of maximum collisions, the bucket contains the structure of a balanced tree of height $h$. Suppose $N(h)$ is the minimum number of nodes, then we get the recurrence $N(h)$ = 1 + $N(h - 1)$ + $N(h - 2)$, growing asymptotically like the Fibonacci sequence. Thus we get $N(h)$ >= $Fib_{h + 2}$ estimated to be the $\phi^{h}$ where $\phi$ is the golden ratio $(1 + (5)^{1/2}) / 2$. This means to get the height of the balanced tree, we must do the logarithmic calculation to get $h$ = $O(\log k)$ where $k$ is the number of nodes/elements in the bucket.
+$proof:$ In the worst case of maximum collisions, the bucket contains the structure of a balanced tree of height $h$. Suppose $N(h)$ is the minimum number of nodes, then we get the recurrence $N(h)$ = 1 + $N(h - 1)$ + $N(h - 2)$, growing asymptotically like the Fibonacci sequence. Thus we get $N(h)$ ≥ $Fib_{h + 2}$ estimated to be the $\phi^{h}$ where $\phi$ is the golden ratio $(1 + (5)^{1/2}) / 2$. This means to get the height of the balanced tree, we must do the logarithmic calculation to get $h$ = $O(\log k)$ where $k$ is the number of nodes/elements in the bucket.
 
 Since $k$ ≤ $n$ where $n$ is the total number of nodes in the entire data structure, then we have $O(\log k)$ ⊆ $O(\log n)$ and in the maximum collision worst case, we have that $k$ = $n$, thus $O(\log k)$ = $O(\log n)$
 
