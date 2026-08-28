@@ -11,7 +11,7 @@
 ## Related Work: 
 #### Java’s HashMap standard library implements collision resolution using linked lists, which were later optimized by replacing them with Red-Black Trees to improve worst-case performance. While Red-Black Trees offer balanced insertion and lookup, they are not strictly height-balanced. In contrast, our design integrates an AVL tree as the collision resolution structure. Since AVL trees maintain stricter balancing than Red-Black Trees, this ensures a tighter bound on tree height and guarantees $O(\log n)$ performance in the worst case for find, insert, and remove operations, while preserving $O(1)$ average-case performance from hashing.
 
-## Design:
+## Data Structure Design:
 #### The data structure hashes element objects into an array of buckets. In the event of a collision (when the mapped element contains the same index of an already existing element represented as the bucket head pointer), each bucket maintains the strict balancing properties of an AVL tree. 
 
 ![](Design.png)
@@ -26,8 +26,8 @@
 $proof:$ Let $\alpha$ be the load factor calculated by $n/m$ where $n$ is the number of elements and $m$ is the number of buckets. This is bounded by a given constant $\alpha$ < $0.75$ = $O(1)$ necessary for resizing.
 1. By uniform hashing, the expected number of elements in any bucket is $E[k]$ = $\alpha$ = $O(1)$, where $k$ is the number of elements in the bucket.
 2. Each operation first calculates the hash and index of the bucket in $O(1)$.
-3. Within each bucket, it contains a balanced tree structure of $O(\log k)$ cost for collision handling. Since $E[k]$ = $O(1)$ given from 1, then we get $O(\log E[k])$ = $O(\log O(1))$ = $O(1)$. 
-We can now combine 2 and 3 to get an overall expected $O(1)$ time complexity for the find, insert, and remove operations.
+3. Within each bucket, it contains a balanced tree structure of $O(\log k)$ cost for collision handling. Since $E[k]$ = $O(1)$ given from point 1, then we get $O(\log E[k])$ = $O(\log O(1))$ = $O(1)$. 
+We can now combine points 2 and 3 to get an overall expected $O(1)$ time complexity for the find, insert, and remove operations.
 
 #### Lemma 2 (Worst Case) : The HashTree data structure guarantees a worst case time complexity of $O(\log n)$ for the find, insert, and remove operations.
 
